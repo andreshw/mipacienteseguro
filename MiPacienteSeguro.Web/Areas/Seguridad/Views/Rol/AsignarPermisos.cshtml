@@ -1,0 +1,31 @@
+﻿@model MiPacienteSeguro.Web.Areas.Seguridad.Models.RolOpciones
+
+@{
+    ViewBag.Title = "AsignarPermisos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Asignar Permisos</h2>
+
+
+@using (Html.BeginForm(new { id=Model.Rol.Id }))
+{
+    <fieldset>
+        @foreach (var opcion in Model.Opciones)
+        {
+        @Html.CheckBox(opcion.Key.Nombre, opcion.Value)
+        @Html.Label(opcion.Key.Nombre)
+        }
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
