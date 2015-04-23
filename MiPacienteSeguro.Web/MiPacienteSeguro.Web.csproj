@@ -115,6 +115,7 @@
     <Compile Include="Areas\Seguridad\Controllers\OpcionController.cs" />
     <Compile Include="Areas\Seguridad\Controllers\RolController.cs" />
     <Compile Include="Areas\Seguridad\Controllers\UsuarioController.cs" />
+    <Compile Include="Areas\Seguridad\Models\UsuarioRoles.cs" />
     <Compile Include="Areas\Seguridad\SeguridadAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -140,6 +141,7 @@
     <Content Include="Areas\Seguridad\Views\Opcion\CrearOpcion.cshtml" />
     <Content Include="Areas\Seguridad\Views\Rol\Index.cshtml" />
     <Content Include="Areas\Seguridad\Views\Rol\AsignarPermisos.cshtml" />
+    <Content Include="Areas\Seguridad\Views\Usuario\AsignarRoles.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

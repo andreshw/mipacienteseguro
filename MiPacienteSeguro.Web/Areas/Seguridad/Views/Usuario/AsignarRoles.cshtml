@@ -1,0 +1,25 @@
+﻿@model MiPacienteSeguro.Web.Areas.Seguridad.Models.UsuarioRoles
+
+@{
+    ViewBag.Title = "AsignarRoles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AsignarRoles</h2>
+
+<div>
+    @Html.DisplayFor(m => m.Usuario.NombreUsuario);
+    <p>
+        @Model.Usuario.NombreUsuario
+    </p>
+
+</div>
+<fieldset>
+    @using (Html.BeginForm())
+    {
+        foreach (var rol in Model.Roles)
+        {
+            @Html.CheckBox(rol.Key.Nombre, rol.Value)
+        }
+    }
+</fieldset>

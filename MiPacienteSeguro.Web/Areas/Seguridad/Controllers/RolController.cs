@@ -31,7 +31,7 @@ namespace MiPacienteSeguro.Web.Areas.Seguridad.Controllers
             RolOpciones rolOpciones = new RolOpciones();
             rolOpciones.Rol = rol;
             rolOpciones.Opciones = new Dictionary<Entidades.Opcion, bool>();
-
+            
             Repo.Opcion repositorioOpciones = new Repo.Opcion();
             var opciones = repositorioOpciones.ConsultarOpciones();
             

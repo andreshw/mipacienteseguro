@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiPacienteSeguro.Web.Areas.Seguridad.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,17 @@ namespace MiPacienteSeguro.Web.Areas.Seguridad.Controllers
             Repo.Usuario usuarioRepositorio = new Repo.Usuario();
             var usuarios = usuarioRepositorio.ConsultarUsuarios();
             return View(usuarios);
+        }
+
+        public ActionResult AsignarRoles(Guid id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AsignarRoles(UsuarioRoles usuarioRoles)
+        {
+            return View();
         }
     }
 }

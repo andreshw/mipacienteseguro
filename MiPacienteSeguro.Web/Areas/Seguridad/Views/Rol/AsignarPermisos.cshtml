@@ -13,8 +13,9 @@
     <fieldset>
         @foreach (var opcion in Model.Opciones)
         {
-        @Html.CheckBox(opcion.Key.Nombre, opcion.Value)
+        @Html.CheckBox(opcion.Key.Nombre, opcion.Value, new { Id = opcion.Key.Id })
         @Html.Label(opcion.Key.Nombre)
+            <br />
         }
 
         <p>

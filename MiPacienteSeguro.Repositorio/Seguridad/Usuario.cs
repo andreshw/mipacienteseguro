@@ -20,6 +20,11 @@ namespace MiPacienteSeguro.Repositorio.Seguridad
             return this._contexto.Usuarios.ToList();
         }
 
+        public Entidades.Usuario ConsultarUsuarioPorId(Guid idUsuario)
+        {
+            return this._contexto.Usuarios.FirstOrDefault(u => u.Id == idUsuario);
+        }
+
         public Entidades.Usuario ConsultarUsuarioPorNombreDeUsuario(string userName)
         {
             return this._contexto.Usuarios.FirstOrDefault(u => u.NombreUsuario == userName);
