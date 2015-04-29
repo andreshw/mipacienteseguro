@@ -14,12 +14,17 @@
     </p>
 
 </div>
-<fieldset>
+
     @using (Html.BeginForm())
     {
-        foreach (var rol in Model.Roles)
-        {
-            @Html.CheckBox(rol.Key.Nombre, rol.Value)
-        }
+        <fieldset>
+            @foreach (var rol in Model.Roles)
+            {
+                @Html.CheckBox(rol.Key.Nombre, rol.Value)
+                @Html.Label(rol.Key.Nombre)
+                <br />
+            }
+            <input type="submit" value="Guardar" />
+        </fieldset>
     }
-</fieldset>
+        

@@ -122,6 +122,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Seguridad\Models\RolOpciones.cs" />
+    <Compile Include="Infraestructura\MiAutorizacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +143,8 @@
     <Content Include="Areas\Seguridad\Views\Rol\Index.cshtml" />
     <Content Include="Areas\Seguridad\Views\Rol\AsignarPermisos.cshtml" />
     <Content Include="Areas\Seguridad\Views\Usuario\AsignarRoles.cshtml" />
+    <Content Include="Areas\Seguridad\Views\Usuario\CrearUsuario.cshtml" />
+    <Content Include="Areas\Seguridad\Views\Usuario\Login.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

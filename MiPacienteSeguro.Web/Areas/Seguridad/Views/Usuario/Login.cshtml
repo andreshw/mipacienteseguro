@@ -1,0 +1,27 @@
+﻿@model MiPacienteSeguro.Dominio.Seguridad.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div> 
+        @using (@Html.BeginForm())
+        { 
+            @Html.Label("Nombre de usuario: ")
+            @Html.TextBoxFor(m => m.NombreUsuario)
+            @Html.Label("Contraseña: ")
+            @Html.PasswordFor(m => m.Password)
+            <input type="submit" value="Ingresar" />
+        }
+        @Html.ActionLink("Regístrate", "CrearUsuario")
+    </div>
+</body>
+</html>

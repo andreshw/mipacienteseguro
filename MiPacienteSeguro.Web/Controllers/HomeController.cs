@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiPacienteSeguro.Web.Infraestructura;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace MiPacienteSeguro.Web.Controllers
 {
     public class HomeController : Controller
     {
+        [MiAutorizacion("Administrador")]
         public ActionResult Index()
         {
             return View();
