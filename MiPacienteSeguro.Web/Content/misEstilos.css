@@ -1,0 +1,15 @@
+﻿body {
+}
+
+.textBoxError {
+    border: 1px solid red;
+    background-color: #ff9c9c;
+}
+
+.mensajeError {
+    color: red;
+}
+
+.invisible {
+    visibility: hidden;
+}

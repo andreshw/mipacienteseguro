@@ -10,17 +10,52 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CrearUsuario</title>
+    <link href="~/Content/misEstilos.css" rel="stylesheet" />
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    
+
     @ViewBag.Error
 
-    @using (Html.BeginForm()) 
+    <script>
+        $(document).ready(function () {
+            $("#NombreUsuario").on("blur", function () {
+                var usuario = $('#NombreUsuario').val();
+                $.get('../Usuario/validarusuario', { nombreUsuario: usuario }, function (data) {
+                    if (data.estado != 'Ok') {
+                        $('#NombreUsuario').addClass("textBoxError");
+                        $('#BotonGuardar').attr('disabled', 'disabled');
+                        $('#MensajeUsuario').removeClass('invisible');
+                    } else {
+                        $('#NombreUsuario').removeClass("textBoxError");
+                        $('#BotonGuardar').removeAttr('disabled');
+                        $('#MensajeUsuario').addClass('invisible');
+                    }
+                });
+            });
+
+            $('#crearUsuario').on('click', function () {
+                var usuario = {
+                    NombreUsuario: $('#NombreUsuario').val(),
+                    Password: $('#Password').val(),
+                    ConfirmacionPassword: $('#ConfirmacionPassword').val(),
+                    IdRol: $('#IdRol').val()
+                };
+
+                $.post('../Usuario/crearusuario', usuario, function (data) {
+                    alert(data.mensaje);
+                    document
+                    window.open(data.urlNavegacion)
+                });
+            });
+        });
+    </script>
+    <input type="button" id="crearUsuario" value="crear" class="btn btn-default" />
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
             <h4>Usuario</h4>
             <hr />
@@ -30,9 +65,10 @@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+                    <span id="MensajeUsuario" class="invisible mensajeError">El usuario ya existe!</span>
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -40,7 +76,7 @@
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.ConfirmacionPassword, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -48,7 +84,7 @@
                     @Html.ValidationMessageFor(model => model.ConfirmacionPassword, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.IdRol, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -56,15 +92,15 @@
                     @Html.ValidationMessageFor(model => model.IdRol, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Create" class="btn btn-default" id="BotonGuardar" />
                 </div>
             </div>
         </div>
     }
-    
+
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

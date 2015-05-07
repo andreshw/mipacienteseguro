@@ -81,7 +81,9 @@ namespace MiPacienteSeguro.Web.Areas.Seguridad.Controllers
             {
                 usuario.Id = Guid.NewGuid();
                 repositorio.GuardarUsuario(usuario);
-                return View("Login");
+
+                //return View("Login");
+                return Json(new { estado = "Ok", mensaje = "Usuario almacenado", urlNavegacion = "../usuario/login"}, JsonRequestBehavior.AllowGet);
             }
             else
             {
@@ -109,6 +111,20 @@ namespace MiPacienteSeguro.Web.Areas.Seguridad.Controllers
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
             return View();
+        }
+
+        public ActionResult ValidarUsuario(string nombreUsuario)
+        {
+            Repo.Usuario repositorio = new Repo.Usuario();
+            var usuario = repositorio.ConsultarUsuarioPorNombreDeUsuario(nombreUsuario);
+            if (usuario != null)
+            {
+                return Json(usuario, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { estado = "Ok" }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }
