@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiPacienteSeguro.Dominio.Seguridad
 {
+    [Serializable]
     public class Usuario
     {
         public Guid Id { get; set; }
@@ -25,6 +26,6 @@ namespace MiPacienteSeguro.Dominio.Seguridad
         [NotMapped]
         public Guid IdRol { get; set; }
 
-        public virtual List<Rol> Rol { get; set; }
+        public List<Rol> Rol { get; set; }
     }
 }

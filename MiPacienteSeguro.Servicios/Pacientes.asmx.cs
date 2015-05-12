@@ -28,14 +28,10 @@ namespace MiPacienteSeguro.Servicios
 
         
         [WebMethod]
-        public Usuario ConsultarUSuarios()
+        public Usuario ConsultarUsuarios(string nombreUsuario)
         {
-            return new Usuario
-            {
-                Id = Guid.NewGuid(),
-                NombreUsuario = "andreshw",
-                Password = "12345"
-            };
+            Repo.Usuario repositorio = new Repo.Usuario();
+            return repositorio.ConsultarUsuarioPorNombreDeUsuario(nombreUsuario);
         }
     }
 }

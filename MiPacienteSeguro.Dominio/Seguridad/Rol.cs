@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiPacienteSeguro.Dominio.Seguridad
 {
+    [Serializable]
     public class Rol
     {
         public Guid Id { get; set; }

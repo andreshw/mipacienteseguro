@@ -115,8 +115,10 @@ namespace MiPacienteSeguro.Web.Areas.Seguridad.Controllers
 
         public ActionResult ValidarUsuario(string nombreUsuario)
         {
-            Repo.Usuario repositorio = new Repo.Usuario();
-            var usuario = repositorio.ConsultarUsuarioPorNombreDeUsuario(nombreUsuario);
+            //Repo.Usuario repositorio = new Repo.Usuario();
+            PruebaServicioWeb.PacientesSoapClient cliente = new PruebaServicioWeb.PacientesSoapClient();
+            var usuario = cliente.ConsultarUsuarios(nombreUsuario);
+            //var usuario = repositorio.ConsultarUsuarioPorNombreDeUsuario(nombreUsuario);
             if (usuario != null)
             {
                 return Json(usuario, JsonRequestBehavior.AllowGet);
