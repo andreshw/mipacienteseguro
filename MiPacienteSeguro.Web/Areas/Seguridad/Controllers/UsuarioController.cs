@@ -77,11 +77,12 @@ namespace MiPacienteSeguro.Web.Areas.Seguridad.Controllers
 
             Repo.Usuario repositorio = new Repo.Usuario();
             var usuarioValidacion = repositorio.ConsultarUsuarioPorNombreDeUsuario(usuario.NombreUsuario);
+            
+
             if (usuarioValidacion == null)
             {
                 usuario.Id = Guid.NewGuid();
                 repositorio.GuardarUsuario(usuario);
-
                 //return View("Login");
                 return Json(new { estado = "Ok", mensaje = "Usuario almacenado", urlNavegacion = "../usuario/login"}, JsonRequestBehavior.AllowGet);
             }
@@ -115,10 +116,9 @@ namespace MiPacienteSeguro.Web.Areas.Seguridad.Controllers
 
         public ActionResult ValidarUsuario(string nombreUsuario)
         {
-            //Repo.Usuario repositorio = new Repo.Usuario();
-            PruebaServicioWeb.PacientesSoapClient cliente = new PruebaServicioWeb.PacientesSoapClient();
-            var usuario = cliente.ConsultarUsuarios(nombreUsuario);
-            //var usuario = repositorio.ConsultarUsuarioPorNombreDeUsuario(nombreUsuario);
+            Repo.Usuario repositorio = new Repo.Usuario();
+           
+            var usuario = repositorio.ConsultarUsuarioPorNombreDeUsuario(nombreUsuario);
             if (usuario != null)
             {
                 return Json(usuario, JsonRequestBehavior.AllowGet);

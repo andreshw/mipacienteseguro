@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\MiPaciente.pubxml" />
+    <None Include="Properties\PublishProfiles\MiPacienteSeguro.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -55,6 +55,10 @@
     <Compile Include="Seguridad\Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MiPacienteSeguro.Dominio.Repositorio\MiPacienteSeguro.Dominio.Repositorio.csproj">
+      <Project>{7379e01c-5fe4-451a-bb14-35d7a0ffb0e0}</Project>
+      <Name>MiPacienteSeguro.Dominio.Repositorio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MiPacienteSeguro.Dominio\MiPacienteSeguro.Dominio.csproj">
       <Project>{7288002e-3c9c-4295-8f16-8f0abe245b61}</Project>
       <Name>MiPacienteSeguro.Dominio</Name>

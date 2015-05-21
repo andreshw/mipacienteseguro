@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiPacienteSeguro.Dominio.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using Entidades = MiPacienteSeguro.Dominio.Seguridad;
 
 namespace MiPacienteSeguro.Repositorio.Seguridad
 {
-    public class Usuario
+    public class Usuario : IUsuario
     {
         private MiPacienteSeguroContexto _contexto;
         public Usuario() 
@@ -16,6 +17,11 @@ namespace MiPacienteSeguro.Repositorio.Seguridad
         }
 
         public List<Entidades.Usuario> ConsultarUsuarios()
+        {
+            return this._contexto.Usuarios.ToList();
+        }
+
+        public List<Entidades.Usuario> ConsultarTodosLosUsuarios()
         {
             return this._contexto.Usuarios.ToList();
         }
